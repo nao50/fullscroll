@@ -118,7 +118,59 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"scripts/index.ts":[function(require,module,exports) {
+// スムーススクロール
+var paginations = document.querySelectorAll(".pagination a");
+paginations.forEach(function (pagination) {
+  pagination.addEventListener("click", function (e) {
+    e.preventDefault();
+    var targetId = e.target['hash'];
+    var target = document.querySelector(targetId);
+    target.scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+}); ////
+// Intersection Observer
 
+var sections = document.querySelectorAll(".section");
+var observerRoot = document.querySelector(".fullPageScroll");
+var options = {
+  root: observerRoot,
+  rootMargin: "-50% 0px",
+  threshold: 0
+};
+var observer = new IntersectionObserver(doWhenIntersect, options);
+sections.forEach(function (section) {
+  observer.observe(section);
+});
+/**
+ * 交差したときに呼び出す関数
+ * @param entries - IntersectionObserverEntry IntersectionObserverが交差したときに渡されるオブジェクトです。
+ */
+
+function doWhenIntersect(entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      activatePagination(entry.target);
+    }
+  });
+}
+/**
+ * ページネーションの大きさを変える関数
+ * @param element - HTMLElement 現在表示中のスライドのHTML要素を引数に取ります。
+ */
+
+
+function activatePagination(element) {
+  var currentActiveIndex = document.querySelector("#pagination .active");
+
+  if (currentActiveIndex !== null) {
+    currentActiveIndex.classList.remove("active");
+  }
+
+  var newActiveIndex = document.querySelector("a[href='#" + element.id + "']");
+  newActiveIndex.classList.add("active");
+}
 },{}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -147,7 +199,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50674" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55403" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
