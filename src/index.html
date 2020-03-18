@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-<!--<meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>フルページスクロール</title>
     <!-- <script src="smoothscroll.js"></script> -->
     <script src="scripts/index.ts" defer></script>
@@ -11,7 +10,16 @@
     <link rel="stylesheet" href="styles/style.css">
     <style></style>
   </head>
-  <body>
+  <!-- <body> -->
+  <body class="has-navbar-fixed-top">
+    <nav class="navbar is-fixed-top is-white has-shadow is-spaced header">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </a>
+      </div>
+    </nav>
+
     <div class="fullPageScroll">
       <section id="section1" class="section section1">
         <h1>Section 1</h1>
@@ -98,7 +106,7 @@
         </p>
       </section>
     </div>
-    <nav id="pagination" class="pagination">
+    <nav id="pagination" class="paging">
       <a id="pagination1" href="#section1"></a>
       <a id="pagination2" href="#section2"></a>
       <a id="pagination3" href="#section3"></a>

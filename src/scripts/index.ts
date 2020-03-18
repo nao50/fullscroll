@@ -1,5 +1,5 @@
 // スムーススクロール
-const paginations = document.querySelectorAll(".pagination a");
+const paginations = document.querySelectorAll(".paging a");
 paginations.forEach(pagination => {
   pagination.addEventListener("click", e => {
     e.preventDefault();

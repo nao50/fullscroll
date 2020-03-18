@@ -85,14 +85,14 @@ p {
   background-color: #20a39e;
 }
 
-.pagination {
+.paging {
   position: fixed;
   top: 50%;
   right: 32px;
   transform: translateY(-50%);
 }
 
-.pagination a {
+.paging a {
   display: block;
   width: 12px;
   height: 12px;
@@ -102,7 +102,7 @@ p {
   transition: transform 0.2s;
 }
 
-.pagination a.active {
+.paging a.active {
   transform: scale(1.8);
 }
 
